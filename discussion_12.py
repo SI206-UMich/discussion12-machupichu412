@@ -66,9 +66,6 @@ def visualization_salary_data(cur, conn):
     min_salary = cur.fetchall()
     for i in range(len(min_salary)):
         min_salary[i] = min_salary[i][0]
-    salaries = cur.fetchall()
-    print(salaries)
-    plt.scatter(x, salaries)
     plt.scatter(x, max_salary, c='r', marker='x')
     plt.scatter(x, min_salary, c='r', marker='x')
     plt.xticks(rotation=45, ha='right')
