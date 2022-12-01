@@ -54,6 +54,17 @@ def problematic_salary(cur, conn):
 
 # TASK 4: VISUALIZATION
 def visualization_salary_data(cur, conn):
+    cur.execute("SELECT Employees.salary, Jobs.job_title FROM Employees JOIN Jobs ON Employees.job_id = Jobs.job_id")
+    salary_job_list = cur.fetchall()
+
+    job_list = []
+    salary_list =[]
+    for item in salary_job_list:
+        job_list.append(item[1])
+        salary_list.append(item[0])
+
+    plt.figure()
+    plt.scatter(x=job_list, y=salary_list)
     cur.execute("SELECT job_title FROM jobs ORDER BY job_id")
     x = cur.fetchall()
     for i in range(len(x)):
